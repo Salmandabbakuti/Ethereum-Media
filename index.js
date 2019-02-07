@@ -24,13 +24,13 @@
       }
     });
   }
-  const address = "0xcbff0b348aac0e1cdc198a9582219c4da7c11f4e";
-  const abi = [{"constant":false,"inputs":[{"name":"_ipfshash","type":"string"},{"name":"_filehash","type":"string"}],"name":"storeHash","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"ipfshash","type":"string"},{"indexed":false,"name":"filehash","type":"string"},{"indexed":false,"name":"dateAdded","type":"uint256"}],"name":"HashAdded","type":"event"},{"constant":true,"inputs":[{"name":"index","type":"uint256"}],"name":"getDateCreated","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"index","type":"uint256"}],"name":"getFileHashes","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"index","type":"uint256"}],"name":"getIpfsHashes","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"}];
+  const address = "0x2088cc7777798CE3a18bbc72AC6be4A62AEB7ecc";
+  const abi = [{"constant":true,"inputs":[{"name":"_fileName","type":"string"}],"name":"getFileName","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_fileName","type":"string"}],"name":"getDateCreated","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_fileName","type":"string"}],"name":"getIpfsHash","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_ipfshash","type":"string"},{"name":"_fileName","type":"string"}],"name":"storeHash","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"ipfshash","type":"string"},{"indexed":false,"name":"fileName","type":"string"},{"indexed":false,"name":"dateAdded","type":"uint256"}],"name":"HashAdded","type":"event"}];
   $(function () {
     var hashStore;
     $('#getFileData').click(function (e) {
       e.preventDefault();
-      hashStore.getDateCreated.call(document.getElementById("index").value, function (err, result1) {
+      hashStore.getDateCreated.call(document.getElementById("fileNameIndex").value, function (err, result1) {
         if (err) {
           return error(err);
         } 
@@ -40,17 +40,17 @@
     });
     $('#getFileData').click(function (e) {
       e.preventDefault();
-            hashStore.getFileHashes.call(document.getElementById("index").value, function (err, result2) {
+            hashStore.getFileName.call(document.getElementById("fileNameIndex").value, function (err, result2) {
         if (err) {
           return error(err);
         } 
         // The return value is a BigNumber object
-        document.getElementById("getFileHash").innerHTML = result2;
+        document.getElementById("getFileName").innerHTML = result2;
       });
      });
     $('#getFileData').click(function (e) {
       e.preventDefault();
-            hashStore.getIpfsHashes.call(document.getElementById("index").value, function (err, result3) {
+            hashStore.getIpfsHash.call(document.getElementById("fileNameIndex").value, function (err, result3) {
         if (err) {
           return error(err);
         } 
@@ -65,7 +65,7 @@ $('#storeHash').click(function (e) {
                      "please unlock it first and reload the page.");
       }
       log("Transaction On its Way...");
-      hashStore.storeHash.sendTransaction(document.getElementById("ipfsHash").value, document.getElementById("fileHash").value,function (err, hash) {
+      hashStore.storeHash.sendTransaction(document.getElementById("ipfsHash").value, document.getElementById("fileName").value,function (err, hash) {
         if (err) {
           return error(err);
         }
