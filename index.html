@@ -16,6 +16,7 @@ for IpfsCloud widget-->
      <center>
         <!--this div element will form the button-->
         <div id="IpfsCloudUploader"></div>
+        <div id="hashes"></div>
     </center>
   </br>
    	<label><b>Store Your Hash:</b></label>
@@ -45,6 +46,7 @@ for IpfsCloud widget-->
 <script>
 ipfscloud.addEventListener("icevent", function(event) {
     console.log(event.detail);
+document.getElementById("hashes").innerHTML= JSON.stringify(event.detail);
   });
 </script>
 </body>
