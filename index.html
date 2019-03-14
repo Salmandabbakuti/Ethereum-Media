@@ -31,7 +31,7 @@ for IpfsCloud widget-->
 </div>
 <div id = "response" style="text-align: center;">
 <p><b>File Name:</b><span id="getFileName">??</span></p>
-<p><b>Ipfs Hash:</b><span id="getIpfsHash">??</span></p>
+<p><b>Ipfs Hash:</b><span onclick="clickable()" id="getIpfsHash">??</span></p>
 <p><b>Date Created:</b><span id="getDateCreated">??</span></p>
 </div>
 <hr>
@@ -44,6 +44,11 @@ for IpfsCloud widget-->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src ="index.js"></script>
 <script>
+	function clickable() {
+  var str = document.getElementById("getIpfsHash").textContent;
+  var result = str.link(str);
+  document.getElementById("getIpfsHash").innerHTML = result;
+}
 ipfscloud.addEventListener("icevent", function(event) {
     console.log(event.detail);    
 document.getElementById("hashes").innerHTML= JSON.stringify(event.detail);
