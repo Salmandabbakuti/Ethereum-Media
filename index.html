@@ -54,7 +54,7 @@ for IpfsCloud widget-->
 }
 ipfscloud.addEventListener("icevent", function(event) {
     console.log(event.detail);    
-document.getElementById("hashes").innerHTML= JSON.stringify(event.detail["data"]);
+document.getElementById("hashes").innerHTML= JSON.stringify(event.detail["data"]["hash"]);
   });
 document.getElementById("getDateCreated").addEventListener("click", function() {
   var unixtime = +document.getElementById('getDateCreated').textContent;
