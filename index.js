@@ -42,7 +42,8 @@
 }
   const address = "0x16771f19bc0b1f241383dc3c8de322f6036067ed";
   const abi = [{"constant":true,"inputs":[{"name":"_fileName","type":"string"}],"name":"getFileName","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_fileName","type":"string"}],"name":"getDateCreated","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getFilesLength","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_fileName","type":"string"}],"name":"getIpfsHash","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_ipfshash","type":"string"},{"name":"_fileName","type":"string"}],"name":"storeHash","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_index","type":"uint256"}],"name":"getUserFiles","outputs":[{"name":"","type":"string"},{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"name":"ipfshash","type":"string"},{"indexed":false,"name":"fileName","type":"string"},{"indexed":false,"name":"dateAdded","type":"uint256"}],"name":"HashAdded","type":"event"}];
-  $(function () {
+  hashStore = web3.eth.contract(abi).at(address);
+$(function () {
     var hashStore;
     $('#getFileData').click(function (e) {
       e.preventDefault();
