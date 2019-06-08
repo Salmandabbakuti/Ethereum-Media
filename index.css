@@ -38,3 +38,9 @@ button:active {
 button:hover {
     opacity: 0.7;
 }
+.message-box {
+    background-color: rgb(70, 190, 255);
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+}
