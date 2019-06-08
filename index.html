@@ -53,6 +53,13 @@ ipfscloud.addEventListener("icevent", function(event) {
     console.log(event.detail);    
 document.getElementById("hashes").innerHTML= JSON.stringify(event.detail);
   });
+document.getElementById("getDateCreated").addEventListener("click", function() {
+  var unixtime = +document.getElementById('getTimestamp').textContent;
+  var newDate = new Date();
+  newDate.setTime(unixtime * 1000);
+  dateString = newDate.toUTCString();
+  document.getElementById("getDateCreated").textContent = dateString;
+});
 </script>
 </body>
 <footer style="text-align: right;">
