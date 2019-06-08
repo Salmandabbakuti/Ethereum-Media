@@ -55,7 +55,7 @@
           return error(err);
         } 
         // The return value is a BigNumber object
-        document.getElementById("getIpfsHash").innerHTML = result3;
+        document.getElementById("getIpfsHash").innerHTML = "http://gateway.ipfs.io/ipfs/"+result3;
       });
      });
 $('#storeHash').click(function (e) {
