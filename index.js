@@ -103,6 +103,7 @@ $('#storeHash').click(function (e) {
       } else {
         log("Connected to the Ropsten test network.");
         hashStore = web3.eth.contract(abi).at(address);
+       $('#storedFiles').click();
         }
     }
   });
